@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+       {% block content %}
+           
+            <div class="col-sm-12">
+                <!-- Portfolio Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-3">Portfolio</h2>
+            {% for job in jobs.all %}
+            <div class="col-lg-4">
+            <p><img src="{{ job.image.url }}" width="200" height="200"/></p>
+            <p>{{ job.summary }}</p>
+            </div>
+            {% endfor %}
+            </div>
+      {% endblock content %}
+
+        

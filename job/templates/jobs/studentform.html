@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+       {% block content %}
+           
+            <div class="col-sm-12">
+                <!-- Portfolio Section Heading -->
+                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-3">Student Form</h2>
+                 <form method="POST" class="post-form" action="/studentform/">  
+                    {% csrf_token %}  
+                <div class="container">  
+            <br>  
+                <div class="form-group row">  
+                   <label class="col-sm-1 col-form-label"></label>  
+                   <div class="col-sm-4">  
+                   <h3>Enter Details</h3>  
+                   </div>  
+                </div>  
+                <div class="form-group row">  
+                <label class="col-sm-2 col-form-label">Student Id:</label>  
+                <div class="col-sm-4">  
+                  {{ form.sid }}  
+                </div>  
+              </div>  
+              <div class="form-group row">  
+                <label class="col-sm-2 col-form-label">Student Name:</label>  
+                <div class="col-sm-4">  
+                  {{ form.sname }}  
+                </div>  
+              </div>  
+                <div class="form-group row">  
+                <label class="col-sm-2 col-form-label">Student Email:</label>  
+                <div class="col-sm-4">  
+                  {{ form.semail }}  
+                </div>  
+              </div>  
+                <div class="form-group row">  
+                <label class="col-sm-2 col-form-label">Student Contact:</label>  
+                <div class="col-sm-4">  
+                  {{ form.scontact }}  
+                </div>  
+              </div>  
+                <div class="form-group row">  
+                <label class="col-sm-1 col-form-label"></label>  
+                <div class="col-sm-4">  
+                <button type="submit" class="btn btn-primary">Submit</button>  
+                </div>  
+              </div>  
+                </div>  
+            </form>  
+           
+            </div>
+      {% endblock content %}

@@ -1,0 +1,8 @@
+.nav-link {
+    color:#fff;
+}
+.text-secondary {
+    color: #000;
+}
+.col-lg-4 { float: left;}
+.messages li { list-style-type: none;background-color:green; color:white;padding:10px;}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+        <!-- Portfolio Item 1 -->
+        {% block content %}
+            <div class="col-sm-12">
+                <h1 class="masthead-heading text-uppercase mb-3 text-center">Student Details</h1>
+            {% for student in students.all %}
+            <div class="col-md-4 col-lg-4">
+            <p>{{ student.Name }}</p>
+            <p>{{ student.DOB }}</p>
+          </div>
+            {% endfor %}
+            </div>
+        </div>
+        {% endblock content %}
+        
