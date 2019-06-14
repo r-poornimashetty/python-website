@@ -38,6 +38,19 @@
                     <input type="text" name="scontact" id="id_scontact" required maxlength="15" value="{{ student.scontact }}" />  
                 </div>  
               </div>  
+              <div class="form-group row">  
+                <label class="col-sm-2 col-form-label">Employee City:</label>  
+                <div class="col-sm-4">  
+                  <select name="scity" id="id_scity"><option value="{{ student.scity }}">{{ student.scity }}</option></select>
+                </div> 
+              </div>
+              <div class="form-group row">  
+                <label class="col-sm-2 col-form-label">Employee Gender:</label>  
+                <div class="col-sm-4">  
+                  <ul id="id_gender"><li><label for="id_gender_0"><input type="radio" name="gender" value="{{ student.gender }}" required="" id="id_gender_0">
+                    {{  student.gender }}</label></ul>
+                </div> 
+              </div>
                 <div class="form-group row">  
                 <label class="col-sm-1 col-form-label"></label>  
                 <div class="col-sm-4">  

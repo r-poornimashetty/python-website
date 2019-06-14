@@ -15,7 +15,9 @@ class StudentForm(forms.ModelForm):
 
     class Meta:
         model = Student
-        fields = "__all__"
+        # fields = "__all__"
+        fields = ['sid', 'sname', 'semail', 'scontact', 'scity', 'gender']
+        widgets = {'gender': forms.RadioSelect}
 
 
 

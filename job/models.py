@@ -14,12 +14,23 @@ class Job(models.Model):
     def __str__(self):
         return self.summary
 
+CITY_CHOICES= [
+    ('Select', 'Select'),
+    ('Bangalore', 'Bangalore'),
+    ('Kolar', 'Kolar'),
+    ('Mysore', 'Mysore'),
+    ('Mandya', 'Mandya'),
+    ]
 
 class Student(models.Model):
     sid = models.CharField(max_length=20)
     sname = models.CharField(max_length=100)
     semail = models.EmailField()
     scontact = models.CharField(max_length=15)
+    scity= models.CharField(max_length=6, choices=CITY_CHOICES, default='select')
+    GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'), ('U', 'Unisex/Parody'))
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='')
+
 
     class Meta:
         db_table = "student"

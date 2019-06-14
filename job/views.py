@@ -13,6 +13,7 @@ from .models import Job, Student
 from .forms import ContactForm, StudentForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .filters import UserFilter
+from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 
 # Create your views here.
 def home(request):
@@ -92,7 +93,8 @@ def std(request):
                 pass
         else:
             form = StudentForm()
-    return render(request, 'jobs/studentform.html', {'form':form})   
+    return render(request, 'jobs/studentform.html', {'form':form}) 
+ 
 
 def studentdetails(request):
     students = Student.objects.all()
