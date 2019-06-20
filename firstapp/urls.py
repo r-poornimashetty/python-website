@@ -26,9 +26,13 @@ urlpatterns = [
     url('about/', job.views.about, name='about'),
     url('contact/', job.views.contact, name='contact'),
     url('studentform/', job.views.std, name='studentform'),
+    url('student/add', job.views.StudentCreateView.as_view(), name='student-add'),
+    url('student/list', job.views.StudentListView.as_view(), name='student-add'),
+    url('student/edit/(?P<pk>\d+)', job.views.StudentUpdate.as_view(), name='student-add'),
     url('studentdetails/', job.views.studentdetails, name='studentdetails'),
     url('studentedit/(?P<id>\d+)', job.views.studentedit, name='studentedit'),
     url('updatestudent/(?P<id>\d+)', job.views.updatestudent, name='updatestudent'),
     url('delete/(?P<id>\d+)', job.views.destroy, name='delete'),
+
     # url('student/', include('student.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

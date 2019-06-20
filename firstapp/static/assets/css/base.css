@@ -6,3 +6,15 @@
 }
 .col-lg-4 { float: left;}
 .messages li { list-style-type: none;background-color:green; color:white;padding:10px;}
+select { 
+    appearance: none; 
+    outline: 0; 
+    background: #007bff; 
+    background-image: none; 
+    color: #ffffff; 
+    cursor: pointer; 
+    border:1px solid black; 
+    border-radius:3px; 
+    padding:5px;
+} 
+.form-check { display: inline-block; padding-right: 3px;}

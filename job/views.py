@@ -9,21 +9,71 @@ from django.shortcuts import redirect, render
 from django.template.loader import get_template
 from django.conf import settings
 from django.contrib import messages
-from .models import Job, Student
+from .models import Job, Student, Revenue
 from .forms import ContactForm, StudentForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .filters import UserFilter
+from .filters import StudentFilter
 from django_filters.rest_framework import DjangoFilterBackend, FilterSet
+from django.views.generic import CreateView, UpdateView
+from django.views.generic.list import ListView
+from django_filters.views import FilterView
+from django.db.models import Count, Q
+from fusioncharts import FusionCharts
+
+
+
+
+class StudentCreateView(CreateView):
+    model = Student
+    form_class = StudentForm
+    success_url = "/student/add"
+
+class StudentUpdate(UpdateView):
+    model = Student
+    form_class = StudentForm
+    template_name_suffix = '_update_form'
+    success_url = '/student/list'
+
+
+class StudentListView(ListView):
+    model = Student
+    paginate_by = 10 # if pagination is desired
+
+
 
 # Create your views here.
 def home(request):
     jobs = Job.objects
-    return render(request, 'jobs/home.html', {'jobs':jobs})
+    dataSource = {}
+    dataSource['chart'] = {
+        "caption": "Monthly revenue for last year",
+            "subCaption": "Harry's SuperMart",
+            "xAxisName": "Month",
+            "yAxisName": "Revenues",
+            # "numberPrefix": "Rs",
+            "theme": "zune"
+        }
+    dataSource['data'] = []
+    # Iterate through the data in `Revenue` model and insert in to the `dataSource['data']` list.
+    for key in Revenue.objects.all():
+      data = {}
+      data['label'] = key.Month
+      data['value'] = key.MonthlyRevenue
+      dataSource['data'].append(data)
+
+    # Create an object for the Column 2D chart using the FusionCharts class constructor
+    column2D = FusionCharts("column2D", "ex1" , "600", "350", "home-container", "json", dataSource)    
+    return render(request, 'jobs/home.html', {'jobs':jobs, 'output': column2D.render()})
     
 
 
 def about(request): 
-    return render(request, 'jobs/about-us.html')
+    dataset = Student.objects \
+    .values('sid') \
+    .annotate(survived_count=Count('sid', filter=Q(survived=True)),
+    not_survived_count=Count('sid', filter=Q(survived=False))) \
+    .order_by('sid')
+    return render(request, 'jobs/about-us.html', {'dataset': dataset})
 
 
 def contact(request):
@@ -66,7 +116,9 @@ def contact(request):
         'form': form_class,
     })
 
-
+def Student_list(request):
+    filter = ProductFilter(request.GET, queryset=Student.objects.all())
+    return render(request, 'my_app/template.html', {'filter': filter})
 
 # def signup(request):
 #     if request.method == 'POST':
@@ -114,6 +166,7 @@ def studentdetails(request):
 
 def studentedit(request, id):
     student = Student.objects.get(id=id)
+    # studentcity = Student.objects.all().order_by('gender')
     return render(request, 'jobs/edit_student.html', {'student':student})
 
 def updatestudent(request, id):
@@ -127,6 +180,8 @@ def updatestudent(request, id):
 def destroy(request, id):  
     student = Student.objects.get(id=id)  
     student.delete()  
-    return redirect("/studentdetails")  
+    return redirect("/studentdetails") 
+
+   
 
 

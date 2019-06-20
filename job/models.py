@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django_countries.fields import CountryField
 
 # Create your models here.
 class Job(models.Model):
@@ -24,12 +25,14 @@ CITY_CHOICES= [
 
 class Student(models.Model):
     sid = models.CharField(max_length=20)
-    sname = models.CharField(max_length=100)
-    semail = models.EmailField()
-    scontact = models.CharField(max_length=15)
-    scity= models.CharField(max_length=6, choices=CITY_CHOICES, default='select')
+    sname = models.CharField(("First Name"), max_length=100)
+    lastname = models.CharField(("Last Name"), max_length=20,  null=True)
+    semail = models.EmailField(("Email"))
+    scontact = models.CharField(("Contact"), max_length=15)
+    scity= models.CharField(("City"), max_length=20, choices=CITY_CHOICES, default='select')
+    sdob = models.DateField(("DOB"), null=True)
     GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'), ('U', 'Unisex/Parody'))
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='')
+    gender = models.CharField(("Gender"), max_length=1, choices=GENDER_CHOICES, default='')
 
 
     class Meta:
@@ -37,5 +40,13 @@ class Student(models.Model):
 
     def __str__(self):
         return self.sname
+
+
+class Revenue(models.Model):
+    MonthlyRevenue = models.CharField(max_length=50)
+    Month = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return u'%s %s' % (self.MonthlyRevenue, self.Month)
 
     
