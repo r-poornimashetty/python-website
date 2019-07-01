@@ -18,3 +18,11 @@ select {
     padding:5px;
 } 
 .form-check { display: inline-block; padding-right: 3px;}
+#student_form .form-group { width:25%; padding:5px; }
+#div_id_Master_Degree_College, #div_id_master_Degree, #div_id_Master_Degree_Stream, #div_id_Master_Degree_year, #div_id_Master_Degree_year, #div_id_Diploma_Stream {
+    display: none;
+}
+
+#div_id_sdob  { position: relative;}
+
+#div_id_sdob div::before { font-family: "Font Awesome 5 Free"; content: "\f073"; font-weight: 900; position: absolute; right:10px; bottom:12px;}

@@ -18,6 +18,15 @@ class StudentForm(forms.ModelForm):
         fields = "__all__"
         # fields = ['sid', 'sname', 'semail', 'scontact', 'scity', 'gender']
         widgets = {'gender': forms.RadioSelect}
+        widgets = {'masterdegreeoption': forms.RadioSelect}
+
+    def __init__(self, *args, **kwargs):
+        super(StudentForm, self).__init__(*args, **kwargs)
+        self.fields['master_Degree'].required = False
+        self.fields['Master_Degree_Stream'].required = False
+        self.fields['Master_Degree_College'].required = False
+        self.fields['Master_Degree_year'].required = False
+        self.fields['Diploma_Stream'].required = False
 
 
 

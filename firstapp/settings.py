@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'django_countries',
+    "django_cron",
+    'django_crontab',
+    "schedule",
+    'background_task',
+    'rolepermissions',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -156,3 +161,34 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'r.poornimashetty@gmail.com'
 EMAIL_HOST_PASSWORD = 'priya4421'
+
+
+CRON_CLASSES = [
+    "job.cron.MyCronJob",
+    # "job.cron.Command",
+    # ...
+]
+
+CRONJOBS = [
+('* * * * *', 'my_app.cron.MyCronJob')
+]
+
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'filename': '/home/poornima/Documents/projects/python/newproject/django.log',
+#             },
+#         },
+#     'loggers': {
+#         'django_cron': {
+#             'handlers': ['file'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+# }

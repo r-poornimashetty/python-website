@@ -15,8 +15,14 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
   <script src="https://code.highcharts.com/highcharts.src.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  
+
+
   <!-- Theme bootstrap css-->
   <link rel="stylesheet" href="{% static 'assets/library/bootstrap/css/bootstrap-grid.css' %}">
   <link rel="stylesheet" href="{% static 'assets/library/bootstrap/css/bootstrap-grid.css.map' %}">
@@ -38,6 +44,7 @@
   
   <!-- Theme CSS -->
   <link rel="stylesheet" href="{% static 'assets/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/jqurey-ui.css' %}">
  
    <!-- fontawesome icons CSS -->
    <link rel="stylesheet" href="{% static 'assets/library/fontawesome/css/fontawesome.css' %}">
@@ -45,6 +52,31 @@
    <!-- fusioncharts -->
    <script src="{% static 'assets/library/fusioncharts/js/fusioncharts.js' %}"></script>
    <script src="{% static 'assets/library/fusioncharts/js/themes/fusioncharts.theme.fusion.js' %}"></script>
+
+   <script>
+     $(document).ready(function(){
+      $(".form-check-input").click(function(){
+        if(jQuery("input[name='masterdegreeoption']:checked").val() == 'Yes'){
+          jQuery("#div_id_Master_Degree_College, #div_id_master_Degree, #div_id_Master_Degree_Stream, #div_id_Master_Degree_year, #div_id_Master_Degree_year").show();
+        }
+        else {
+          jQuery("#div_id_Master_Degree_College, #div_id_master_Degree, #div_id_Master_Degree_Stream, #div_id_Master_Degree_year, #div_id_Master_Degree_year").hide();
+        }
+      })
+
+      $("#id_twelthboard").change(function(){
+        if (jQuery(this).val() == 'Diploma'){
+          jQuery("#div_id_Diploma_Stream").show();
+        }
+        else{
+          jQuery("#div_id_Diploma_Stream").hide();
+        }
+      })
+
+      $(".dateinput").datepicker();
+
+     });
+   </script>
 
 </head>
 
@@ -95,7 +127,7 @@
       <div class="divider-custom divider-light">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon">
-            <i class="fas fa-archway"></i>
+            <i class="fas fa-calendar"></i>
         </div>
         <div class="divider-custom-line"></div>
       </div>

@@ -5,11 +5,13 @@
 
        {% block content %}
        <div class="col-sm-12">
-       <form method="post" class="form-group">{% csrf_token %}
+       <form method="post" id="student_form">{% csrf_token %}
             <!-- {{ form|crispy }} -->
             <div class="form-row">
                 
-                    <div class="form-group col-md-3 mb-0">
+                      {{ form|crispy }}
+                
+                    <!-- <div class="form-group col-md-3 mb-0">
                       {{ form.sid|as_crispy_field }}
                     </div>
                     <div class="form-group col-md-3 mb-0">
@@ -25,16 +27,54 @@
                         {{ form.scontact|as_crispy_field }}
                     </div>
                     <div class="form-group col-md-3 mb-0">
-                        {{ form.scity|as_crispy_field }}
-                    </div>
-                    <div class="form-group col-md-3 mb-0">
                         {{ form.sdob|as_crispy_field }}
                     </div>
                     <div class="form-group col-md-3 mb-0">
                         {{ form.gender|as_crispy_field }}
                     </div>
-                    
-                  </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.country|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.sate|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.scity|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.pincode|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.twelthboard|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.puc_diploma_year|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.Diploma_Stream|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.degree|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.Degree_College|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.degree_Stream|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.masterdegreeoption|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.master_Degree|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.Master_Degree_Stream|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.Master_Degree_College|as_crispy_field }}
+                    </div> -->
+            </div>
             <input type="submit" class="btn btn-success" value="Save">
         </form>
        </div>
